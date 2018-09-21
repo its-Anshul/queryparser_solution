@@ -1,5 +1,10 @@
 package com.stackroute.datamunger.query;
 
+import com.stackroute.datamunger.query.parser.QueryParameter;
+import com.stackroute.datamunger.query.parser.QueryParser;
+import com.stackroute.datamunger.reader.CsvQueryProcessor;
+import com.stackroute.datamunger.writer.JsonWriter;
+
 import java.util.HashMap;
 
 public class Query {
@@ -13,34 +18,42 @@ public class Query {
 	 * CsvQueryProcessor, which can work with select queries containing zero, one or
 	 * multiple conditions
 	 */
+
 	@SuppressWarnings("rawtypes")
 	public HashMap executeQuery(String queryString) {
 	
 		/* instantiate QueryParser class */
-		
+        QueryParser queryParser = new QueryParser();
+
+
 		/*
 		 * call parseQuery() method of the class by passing the queryString which will
 		 * return object of QueryParameter
 		 */
-		
-		
+
+		QueryParameter queryParameter = queryParser.parseQuery(queryString);
+        CsvQueryProcessor csvQueryProcessor = new CsvQueryProcessor();
 		/*
 		 * Check for Type of Query based on the QueryParameter object. In this
 		 * assignment, we will process only queries containing zero, one or multiple
 		 * where conditions i.e. conditions without aggregate functions, order by clause
 		 * or group by clause
 		 */
-		
-		
+
+
+        DataSet dataSet = csvQueryProcessor.getResultSet(queryParameter);
+
+
 		/*
 		 * call the getResultSet() method of CsvQueryProcessor class by passing the
 		 * QueryParameter Object to it. This method is supposed to return resultSet
 		 * which is a HashMap
 		 */
-		
-		
+
+        JsonWriter j = new JsonWriter();
+        j.writeToJson(dataSet);
 	
-		return null;
+		return dataSet;
 	}
 
 }

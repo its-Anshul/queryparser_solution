@@ -1,5 +1,11 @@
 package com.stackroute.datamunger.query;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
+
 /*
  * Implementation of DataTypeDefinitions class. This class contains a method getDataTypes() 
  * which will contain the logic for getting the datatype for a given field value. This
@@ -14,30 +20,59 @@ package com.stackroute.datamunger.query;
  */
 public class DataTypeDefinitions {
 
-	//method stub
-	public static Object getDataType(String input) {
-	
-		// checking for Integer
-		
-		// checking for floating point numbers
-		
-		// checking for date format dd/mm/yyyy
-		
-		// checking for date format mm/dd/yyyy
-		
-		// checking for date format dd-mon-yy
-		
-		// checking for date format dd-mon-yyyy
-		
-		// checking for date format dd-month-yy
-		
-		// checking for date format dd-month-yyyy
-		
-		// checking for date format yyyy-mm-dd
-		
-		return null;
-	}
-	
+    private static Pattern DATE_PATTERN_1 = Pattern.compile(
+            "^\\d{4}-\\d{2}-\\d{2}$");
 
-	
+    private static Pattern DATE_PATTERN_2 = Pattern.compile(
+            "^\\d{2}-\\d{3}-\\d{4}$");
+
+    private static Pattern DATE_PATTERN_3 = Pattern.compile(
+            "^\\d{2}-\\d{3}-\\d{2}$");
+
+    private static Pattern DATE_PATTERN_4 = Pattern.compile(
+            "^\\d{2}/\\d{2}/\\d{4}$");
+
+    private static Pattern DATE_PATTERN_5 = Pattern.compile(
+            "^\\d{2}-\\d{2}-\\d{4}$");
+
+    //method stub
+
+    Map<Integer , String > dataType = new HashMap<Integer , String>();
+
+
+    public void setDataType(String input) {
+
+
+		String[] data = input.split(",",-1);
+		//System.out.println("sfdnjdbfjs" + data[17] + "dsfhdsfbhej");
+		for(int i=0;i<data.length;i++)
+		{
+			Pattern pattern = Pattern.compile(".*\\D.*");
+			//Pattern pattern1 = Pattern.compile(".*\\-*")
+
+
+			if(data[i].equals(""))
+				this.dataType.put(i , "java.lang.Object");
+			else if(DATE_PATTERN_4.matcher(data[i]).matches())
+				this.dataType.put(i , "java.util.Date");
+			else if(DATE_PATTERN_3.matcher(data[i]).matches())
+				this.dataType.put(i , "java.util.Date");
+			else if(DATE_PATTERN_2.matcher(data[i]).matches())
+				this.dataType.put(i , "java.util.Date");
+			else if(DATE_PATTERN_1.matcher(data[i]).matches())
+				this.dataType.put(i , "java.util.Date");
+			else if(!pattern.matcher(data[i]).matches())
+				this.dataType.put(i , "java.lang.Integer");
+			else
+				this.dataType.put(i , "java.lang.String");
+		}
+
+
+
+//		return this.dataType;
+	}
+
+    public Map<Integer, String> getDataType() {
+        return dataType;
+    }
 }

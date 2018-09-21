@@ -164,7 +164,8 @@ public class DataMungerTest {
 
 		List<String> logicalop = new ArrayList<String>();
 		logicalop.add("and");
-
+		//System.out.println(restrictions.get(0).getPropertyName());
+		//System.out.println(restrictions.get(1).getPropertyName());
 		Boolean status = false;
 		int counter = 0;
 		if (restrictions.get(0).getPropertyName().contains("season")
@@ -177,6 +178,7 @@ public class DataMungerTest {
 				&& restrictions.get(1).getCondition().contains("=")) {
 			counter++;
 		}
+		//System.out.println(counter);
 		if (counter > 1) {
 			status = true;
 		}
@@ -184,7 +186,7 @@ public class DataMungerTest {
 		List<AggregateFunction> aggregatefunction = new ArrayList<AggregateFunction>();
 		int loopcounter = 0;
 		for (AggregateFunction afunction : aggfunction) {
-			aggregatefunction.add(afunction);
+            aggregatefunction.add(afunction);
 			if (afunction.getFunction().contains("count") || afunction.getFunction().contains("sum")
 					|| afunction.getFunction().contains("min") || afunction.getFunction().contains("max")) {
 				loopcounter++;
@@ -241,6 +243,7 @@ public class DataMungerTest {
 
 		Boolean status = false;
 		int counter = 0;
+        System.out.println(restrictions.get(1).getPropertyName());
 		if (restrictions.get(0).getPropertyName().contains("season")
 				&& restrictions.get(0).getPropertyValue().contains("2014")
 				&& restrictions.get(0).getCondition().contains(">")) {
@@ -589,10 +592,10 @@ public class DataMungerTest {
 
 		Set map = dataSet.entrySet();
 		Iterator itr = map.iterator();
-
-		int counter = 0;
+        int counter = 0;
 		while (itr.hasNext()) {
-			if (recordscounter == 1) {
+           // System.out.println(itr.next().toString());
+            if (recordscounter == 1) {
 				if (itr.next().toString().contains(
 						"1={winner=Kolkata Knight Riders, city=Bangalore, team1=Kolkata Knight Riders, team2=Royal Challengers Bangalore}")) {
 					counter++;
