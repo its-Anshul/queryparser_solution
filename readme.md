@@ -2,8 +2,6 @@
 
 ### Problem Statement
 
-Until step 4, we are not fetching data from the file.
-
 In this step, we will begin executing the queries - we will read the data from the CSV file based on to the query and filter the fields and records based on "select" and "where" condition. 
 We will store the extracted data in a separate JSON file named result.json.
 
