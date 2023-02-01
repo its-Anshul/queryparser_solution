@@ -82,9 +82,6 @@ For Example
                     }
 
 
-`Note : Once you have cloned boilerplate from the given gitlab URL, import the project into eclipse. 
-Your project’s test cases might show compile time errors for methods, as you have not written the complete code.`
-
 ### Expected solution
 
 A JSON file containing the filtered result set.
@@ -98,8 +95,6 @@ A JSON file containing the filtered result set.
 - write the result set into a JSON file
 
 ### Project structure
-
-The folders and files you see in this repositories, is how it is expected to be in projects, which are submitted for automated evaluation by Hobbes
 
 	Project
 	|
@@ -135,7 +130,6 @@ The folders and files you see in this repositories, is how it is expected to be 
 	└── PROBLEM.md  		                    // This files describes the problem of the assignment/project, you can provide as much as information and clarification you want about the project in this file
 
 > PS: All lint rule files are by default copied during the evaluation process, however if need to be customizing, you should copy from this repo and modify in your project repo
-
 
 #### To use this as a boilerplate for your new project, you can follow these steps
 
@@ -174,12 +168,6 @@ The folders and files you see in this repositories, is how it is expected to be 
      `git push -u origin master`
 
 8. Check on the git repo online, if the files have been pushed
-
-### Important instructions for Participants
-> - We expect you to write the assignment on your own by following through the guidelines, learning plan, and the practice exercises
-> - The code must not be plagiarized, the mentors will randomly pick the submissions and may ask you to explain the solution
-> - The code must be properly indented, code structure maintained as per the boilerplate and properly commented
-> - Follow through the problem statement shared with you
 
 ### Further Instructions on Release
 
